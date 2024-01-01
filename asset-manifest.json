@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ayoubgoumbark/pokemon/static/css/main.e13c852e.css",
+    "main.js": "/ayoubgoumbark/pokemon/static/js/main.587fe32d.js",
+    "index.html": "/ayoubgoumbark/pokemon/index.html",
+    "main.e13c852e.css.map": "/ayoubgoumbark/pokemon/static/css/main.e13c852e.css.map",
+    "main.587fe32d.js.map": "/ayoubgoumbark/pokemon/static/js/main.587fe32d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e13c852e.css",
+    "static/js/main.587fe32d.js"
+  ]
+}

@@ -1,0 +1,69 @@
+.modal-overlay{
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+}
+
+.modal-content button{
+    position: relative;
+    top: 11px;
+    
+    background: #ffc68a;
+    border: 2px solid black;
+    border-radius: 19%;
+    font-family: fantasy;
+
+
+}
+
+.modal-content{
+    position: relative;
+width: 60%;
+    background-color: white;
+    height: 80%;
+    border: 8px solid black;
+    border-radius: 10%;
+}
+.modal-content img {
+    width: 38%;
+}
+
+.details{
+    display: flex;
+}
+
+.details ul{
+    width: 50%;
+    display: math;
+}
+.details ul li label{
+    margin-left: 10%;
+}
+
+.powersList{
+    margin-top:10%
+}
+
+
+@media only screen and (max-width: 600px) {
+    .modal-content{
+        width: 100%;
+    }
+    .modal-content img {
+        object-fit: contain;
+    }
+    
+    
+
+}
+
+
+    

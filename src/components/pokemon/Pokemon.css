@@ -11,7 +11,9 @@
 }
 
 
-
+h4{
+  transition: all 0.5s ease;
+}
 
 .pokemon:hover{
 
@@ -24,7 +26,7 @@
   img{
     transform: scale(1.5) translateY(20px);
 
-    transition: all 0.5s ease;
+   
   }
 
   h4{
@@ -38,6 +40,7 @@
   width: 50%;
   height: 50%;
   filter: drop-shadow(2px 4px 6px black);
+   transition: all 0.5s ease;
 }
 
 

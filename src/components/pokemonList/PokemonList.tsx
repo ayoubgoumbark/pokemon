@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import InfiniteScroll from 'react-infinite-scroll-component';
+//import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { PokemonState } from '../../store/reducers/pokemonReducer';
 import pokemonModel from '../../models/pokemonModel';
@@ -29,6 +29,10 @@ const PokemonList: React.FC = () => {
   useEffect(() => {
 
     fetchPokemonsHandler(offset);
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
     
   }, []);
 
@@ -51,16 +55,26 @@ const PokemonList: React.FC = () => {
     
   };
 
+const handleScroll = async () => {
+    if (
+        window.innerHeight + document.documentElement.scrollTop + 1 >=
+        document.documentElement.scrollHeight
+    ) {
+       
+        fetchMorePokemons()
+    }
+};
+
+
+
+
+
+
+
   return (
     <div>
       <h1>Pokémon List</h1>
-      <InfiniteScroll
-        dataLength={pokemons.length}
-        next={fetchMorePokemons}
-        hasMore={!loading && !error} 
-        loader={<b></b>}
-        endMessage={<b>loading Pokemons...</b>}
-      >
+
         <div className='container'>
           <div className='pokemonList'> 
             {pokemons.map((pokemon: pokemonModel,index) => (
@@ -70,7 +84,7 @@ const PokemonList: React.FC = () => {
             ))}
           </div>
         </div>
-      </InfiniteScroll>
+
       {selectedPokemon && (<PokemonDetails onClose={closeModal} pokemon={selectedPokemon} />) }
      
       {error && <div>Error: {error}</div>}

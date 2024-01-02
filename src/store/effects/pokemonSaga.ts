@@ -40,7 +40,7 @@ export function* fetchPokemons(action: any): Generator<any, void, any> {
     const offset = action.offset || 10;
    
     const numbersToFetch = Array.from({ length: 10 }, (_, index) => offset - 9 + index);
-
+   
     const pokemonDetails: pokemonModel[] = yield all(
       numbersToFetch.map((num) => call(fetchPokemonDetails, num))
     );

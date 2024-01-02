@@ -13,33 +13,30 @@ const PokemonList: React.FC = () => {
 
 
   const dispatch = useDispatch();
-  const { error, loading, pokemons } = useSelector((state: PokemonState) => state);
-  const [offset, setOffset] = useState(10);
+  const { error, pokemons } = useSelector((state: PokemonState) => state);
+  const [offset, setOffset] = useState(0);
   const [selectedPokemon, setSelectedPokemon] =useState<pokemonModel | null>(null);
 
-  const fetchPokemonsHandler = (offset: number) => {
-   
-    dispatch({type:FETCH_POKEMON_REQUEST,offset:offset});
-    setOffset(offset + 10);
-    
-    
-    
-  };
 
   useEffect(() => {
-
-    fetchPokemonsHandler(offset);
-
+   
+    setOffset(10);
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
     
   }, []);
 
- 
-  const fetchMorePokemons = () => {
-    fetchPokemonsHandler(offset);
-  };
+
+  
+  useEffect(() => {
+   
+    dispatch({type:FETCH_POKEMON_REQUEST,offset:offset});
+   
+  }, [offset]);
+  
+   
+
 
 
   const handlePokemonClick = (pokemon:pokemonModel) => {
@@ -55,20 +52,16 @@ const PokemonList: React.FC = () => {
     
   };
 
-const handleScroll = async () => {
+  const handleScroll = async () => {
     if (
         window.innerHeight + document.documentElement.scrollTop + 1 >=
         document.documentElement.scrollHeight
     ) {
-       
-        fetchMorePokemons()
+      
+      setOffset((value) => value + 10);
+
     }
 };
-
-
-
-
-
 
 
   return (
